@@ -1,14 +1,36 @@
 {
-  "name": "lws-json-server-todos",
-  "description": "Example in memory todos api with json-server by Learn with Sumit",
+  "name": "lws-server-batch-2",
   "version": "1.0.0",
+  "description": "api server",
   "main": "index.js",
   "scripts": {
-    "start": "json-server --watch db.json --no-cors true  --port 9000"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MehediHasanNabil/lws-server-batch-2.git"
+  },
+  "keywords": [
+    "lws",
+    "project",
+    "api"
+  ],
+  "author": "Md. Mehedi Hasan Nabil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MehediHasanNabil/lws-server-batch-2/issues"
+  },
+  "homepage": "https://github.com/MehediHasanNabil/lws-server-batch-2#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   },
   "dependencies": {
-    "json-server": "^0.17.1"
-  },
-  "keywords": [],
-  "author": "Sumit Saha, Learn with Sumit"
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  }
 }
