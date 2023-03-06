@@ -1,16 +1,21 @@
 const express = require("express");
+const path = require("path")
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const morgan = require("morgan");
 
 require("dotenv").config();
 
 const bookRoutes = require("./routes/Book.routes");
+const errorHandler = require("./middleware/errorHandler");
+const notFoundHandler = require("./middleware/notFoundHandler");
 
 const app = express();
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 8000;
 
 app.use(cors());
+morgan("tiny");
 
 // Configuring body parser middleware
 app.use(express.json());
@@ -26,11 +31,17 @@ mongoose
   .then(() => console.log("database connection successful!"))
   .catch((err) => console.log("error", err));
 
-app.use("/book", bookRoutes);
+app.use("/api/book", bookRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  console.log(__dirname)
+  res.status(200).sendFile(path.join(__dirname+'/public/index.html'));
 });
+
+// 404 handler
+app.use(notFoundHandler);
+// error handler
+app.use(errorHandler);
 
 app.listen(port, function () {
   console.log(`Server is running on http://localhost:${port}`);

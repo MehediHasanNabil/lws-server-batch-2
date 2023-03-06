@@ -1,9 +1,9 @@
-const Book = require("../models/Book.model");
+const BookModel = require("../models/Book.model");
 
 // get all books
 async function getBooks(req, res, next) {
   try {
-    const books = await Book().find({});
+    const books = await BookModel.find({});
     res.status(200).json(books);
   } catch (error) {
     console.log(error);
@@ -24,7 +24,7 @@ async function addBook(req, res, next) {
     const { name, author, thumbnail, price, rating, featured } = req.body || {};
 
     // create new book
-    const newBook = new Book({
+    const newBook = new BookModel({
       name,
       author,
       thumbnail,
@@ -36,6 +36,7 @@ async function addBook(req, res, next) {
     await newBook.save();
 
     res.status(201).json({
+      book: newBook,
       success: {
         message: "Book add success",
       },
