@@ -28,7 +28,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("database connection successful!"))
+  .then(() => console.log("Database connection successful!"))
   .catch((err) => console.log("error", err));
 
 app.use("/api/book", bookRoutes);
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 });
 
 // 404 handler
-app.use(notFoundHandler);
+// app.use(notFoundHandler);
 // error handler
 app.use(errorHandler);
 
